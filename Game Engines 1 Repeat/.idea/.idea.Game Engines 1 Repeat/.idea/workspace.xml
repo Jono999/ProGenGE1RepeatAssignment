@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f2aa06b7-d800-469a-a0cf-8ae28d977402" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/AgentParameters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/RoadHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/Direction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/Visualiser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/Rule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/SimpleVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/LSystemGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/PlacementHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/RHelpAlt.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlaneFace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Plane.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Face.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ProGenPlane.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/Lsystem Scripts/Rules/Rule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/AgentParameters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/LSystemGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/Direction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/RoadHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/RHelpAlt.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/Rule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/SimpleVisualiser.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/Visualiser.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/LsysScene/Lsystem Scripts/PlacementHelper.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1f2nBXKEKfcpOfPPRx1VLfUgGXD" />
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f2aa06b7-d800-469a-a0cf-8ae28d977402" name="Default Changelist" comment="" />
+      <created>1595424921671</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595424921671</updated>
+      <workItem from="1595424930860" duration="33544000" />
+      <workItem from="1595504131285" duration="7857000" />
+      <workItem from="1595606953328" duration="7304000" />
+      <workItem from="1595680532099" duration="15504000" />
+      <workItem from="1595711478748" duration="1545000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
