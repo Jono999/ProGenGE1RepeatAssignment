@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickLine : MonoBehaviour
+public class ClickStreets : MonoBehaviour
 {
 
     //private List<GameObject> pointsObjects;
@@ -149,12 +149,12 @@ public class ClickLine : MonoBehaviour
         //Vector3 pointToLeft = newPoint + Quaternion.AngleAxis(90.0f, Vector3.forward) * (RandomPointsForSubdivision[1] - newPoint).normalized;
         Vector3 pointToRight = randomPointOnLine + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                      * (RandomPointsForSubdivision[1] - randomPointOnLine).normalized 
-                                     * (floatDistance / 2);
+                                     * (floatDistance / 4);
         //Vector3 endPointToRight = pointToRight + distance/2;
         
         Vector3 pointToLeft = randomPointOnLine + Quaternion.AngleAxis(- 90.0f, Vector3.forward)
                                * (RandomPointsForSubdivision[1] - randomPointOnLine).normalized 
-                               * (floatDistance / 2);
+                               * (floatDistance / 4);
        // Vector3 endPointToLeft = pointToRight + distance/2;
         
        // Debug.Log(newPoint);
@@ -165,7 +165,7 @@ public class ClickLine : MonoBehaviour
         LineRenderer rightLineRenderer = proGenRightLine.AddComponent<LineRenderer>();
         rightLineRenderer.material = lineMaterial;
         rightLineRenderer.startWidth = .1f;
-        rightLineRenderer.endWidth = .5f;
+        rightLineRenderer.endWidth = .1f;
         rightLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
         rightLineRenderer.SetPosition(1, pointToRight);// endPointToLeft);
         
@@ -174,7 +174,7 @@ public class ClickLine : MonoBehaviour
         LineRenderer leftLineRenderer = proGenLeftLine.AddComponent<LineRenderer>();
         leftLineRenderer.material = lineMaterial;
         leftLineRenderer.startWidth = .1f;
-        leftLineRenderer.endWidth = .5f;
+        leftLineRenderer.endWidth = .1f;
         leftLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
         leftLineRenderer.SetPosition(1, pointToLeft);// endPointToLeft);
         

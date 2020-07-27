@@ -35,10 +35,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/Intersection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/LastLines.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AddMousePoints.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickStreets.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/DrawLineAgain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/Lines.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AMultiLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AddCityCentre.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/MeshScene/Mesh Scripts/Face.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/Conexion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/DrawLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/MousePositionOnClick.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,6 +78,7 @@
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/LastLines.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AMultiLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickLine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickStreets.cs" />
       </list>
     </option>
   </component>
@@ -115,7 +118,7 @@
       <workItem from="1595680532099" duration="15504000" />
       <workItem from="1595711478748" duration="1545000" />
       <workItem from="1595766288762" duration="44322000" />
-      <workItem from="1595849186795" duration="4022000" />
+      <workItem from="1595849186795" duration="22851000" />
     </task>
     <servers />
   </component>
