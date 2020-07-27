@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickLine : MonoBehaviour
+public class AMultiLine : MonoBehaviour
 {
 
-    //private List<GameObject> pointsObjects;
-  
     public bool pointOneIsSet;
     
-    public List<Vector3> TempSavedPairedPoints = new List<Vector3>();
     public List<Vector3> SavedPairedPoints = new List<Vector3>();
 
     public Vector3 mousePosOne, mousePosTwo;
@@ -37,7 +34,6 @@ public class ClickLine : MonoBehaviour
             mousePosOne.z=0;
             
             Vector3 startPoint = new Vector3(mousePosOne.x, mousePosOne.y, mousePosOne.z);
-            TempSavedPairedPoints.Add(startPoint);
             SavedPairedPoints.Add(startPoint);
             
             pairOfPoints[0] = startPoint;
@@ -58,7 +54,6 @@ public class ClickLine : MonoBehaviour
         mousePosTwo.z=0;
             
         Vector3 endPoint = new Vector3(mousePosTwo.x, mousePosTwo.y, mousePosTwo.z);
-        TempSavedPairedPoints.Add(endPoint);
         SavedPairedPoints.Add(endPoint);
         
         pairOfPoints[1] = endPoint;
@@ -71,10 +66,10 @@ public class ClickLine : MonoBehaviour
         lineRenderer.material = lineMaterial;
         lineRenderer.startWidth = .1f;
         lineRenderer.endWidth = .1f;
-        lineRenderer.SetPosition(0, TempSavedPairedPoints[0]);
-        lineRenderer.SetPosition(1, TempSavedPairedPoints[1]);
+        lineRenderer.SetPosition(0, SavedPairedPoints[0]);
+        lineRenderer.SetPosition(1, SavedPairedPoints[1]);
         
-        TempSavedPairedPoints.RemoveRange(0,TempSavedPairedPoints.Count);
+        SavedPairedPoints.RemoveRange(0,SavedPairedPoints.Count);
 
         pointOneIsSet = false;
     }
