@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickStreets : MonoBehaviour
+public class ClickCity : MonoBehaviour
 {
 
     //private List<GameObject> pointsObjects;
@@ -151,7 +151,7 @@ public class ClickStreets : MonoBehaviour
         rightLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
         rightLineRenderer.SetPosition(1, pointToRight);// endPointToLeft);
         
-        GameObject proGenLeftLine = new GameObject("Pro Gen Line To Right"); 
+        GameObject proGenLeftLine = new GameObject("Pro Gen Line To Left"); 
         //line.transform.position = RandomPosition;
         LineRenderer leftLineRenderer = proGenLeftLine.AddComponent<LineRenderer>();
         leftLineRenderer.material = lineMaterial;
@@ -174,8 +174,15 @@ public class ClickStreets : MonoBehaviour
 
     public void MakeSetAndSubdivideEverythingInIt()
     {
-        
         int lineIndex = 0;
+
+        Vector3 randomPointOnLine;
+
+        Vector3 pointToRight;
+
+        Vector3 pointToLeft;
+
+        float floatDistance;
         
         for (int i = 0; i < RandomPointsForSubdivision.Count - 1; i++)
         {
@@ -190,18 +197,20 @@ public class ClickStreets : MonoBehaviour
             
             //Vector3 randomPointOnLine = Vector3.Lerp(SavedPairedPoints[i], SavedPairedPoints[i+1], Random.value);// 0.3f);
             
-            Vector3 randomPointOnLine = Vector3.Lerp(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i+1], Random.value);// 0.3f);
+            randomPointOnLine = Vector3.Lerp(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i+1], Random.value);// 0.3f);
         
-            float floatDistance = Vector3.Distance(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i+1]);
+            floatDistance = Vector3.Distance(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i+1]);
         
-            Vector3 pointToRight = randomPointOnLine + Quaternion.AngleAxis(90.0f, Vector3.forward)
+            pointToRight = randomPointOnLine + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                                      * (RandomPointsForSubdivision[i+1] - randomPointOnLine).normalized 
                                                      * (floatDistance / 4);
 
-            Vector3 pointToLeft = randomPointOnLine + Quaternion.AngleAxis(- 90.0f, Vector3.forward)
+            pointToLeft = randomPointOnLine + Quaternion.AngleAxis(- 90.0f, Vector3.forward)
                                                     * (RandomPointsForSubdivision[i+1] - randomPointOnLine).normalized 
                                                     * (floatDistance / 4);
-        
+            
+            
+            //Vector3 newRandomPointOnLine = Vector3.Lerp(NewPointsForSubdivision[i], NewPointsForSubdivision[i+1], Random.value);
             float NewRightLineFloatDistance = Vector3.Distance(randomPointOnLine, pointToRight);
             float NewLeftLineFloatDistance = Vector3.Distance(randomPointOnLine, pointToLeft);
             
@@ -211,107 +220,150 @@ public class ClickStreets : MonoBehaviour
             Vector3 leftDistance = new Vector3();
             leftDistance = randomPointOnLine - pointToLeft;
             
-             List<Vector3> NewPointsForSubdivision = new List<Vector3>();
-             NewPointsForSubdivision.Add(randomPointOnLine);
-             NewPointsForSubdivision.Add(pointToRight);
-             NewPointsForSubdivision.Add(randomPointOnLine); // probably
-             NewPointsForSubdivision.Add(pointToLeft);
+            List<Vector3> NewPointsForSubdivision = new List<Vector3>();
+            NewPointsForSubdivision.Add(rightDistance);
+            NewPointsForSubdivision.Add(leftDistance);
+            
+            //NewPointsForSubdivision[i] = rightDistance;
+            //NewPointsForSubdivision.Add(RandomPointsForSubdivision[i]);
+            //NewPointsForSubdivision.Add(randomPointOnLine); // probably
+            //NewPointsForSubdivision.Add(pointToLeft);
 
-             //for (int j = 0; j < NewPointsForSubdivision.Count; j++)
-             foreach (var street in RandomPointsForSubdivision)//doesnt seem to help
-             {
-                 GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right"); 
-                 //line.transform.position = RandomPosition;
-                 LineRenderer rightLineRendererOne = proGenRightLineOne.AddComponent<LineRenderer>();
-                 rightLineRendererOne.material = lineMaterial;
-                 rightLineRendererOne.startWidth = .1f;
-                 rightLineRendererOne.endWidth = .1f;
-                 rightLineRendererOne.SetPosition(0, randomPointOnLine);//newPoint);
-                 rightLineRendererOne.SetPosition(1, pointToRight);// endPointToLeft);
-                 
-                 //RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count); //doesnt work in this loop
-                 //RandomPointsForSubdivision.Add(street);
-                 //RandomPointsForSubdivision.Add(pointToRight);
-
-                 //SavedPairedPoints.RemoveRange(0,SavedPairedPoints.Count);
-                 //SavedPairedPoints.Add(randomPointOnLine);
-                 //SavedPairedPoints.Add(pointToRight);
-                 //SavedPairedPoints.Add(randomPointOnLine);
-                 //SavedPairedPoints.Add(pointToLeft);
-                 
-                 //NewPointsForSubdivision.Remove(i);
-                 
-                 //RandomPointsForSubdivision.Add(randomPointOnLine);
-                 //RandomPointsForSubdivision.Add(pointToRight);
-                 //j += 2;
-
-                 //RandomPointsForSubdivision[lineIndex] = i;
-                 //lineIndex += 2;
-                 
-                 GameObject proGenLeftLineOne = new GameObject("Pro Gen Line To Right"); 
-                 //line.transform.position = RandomPosition;
-                 LineRenderer leftLineRendererOne = proGenLeftLineOne.AddComponent<LineRenderer>();
-                 leftLineRendererOne.material = lineMaterial;
-                 leftLineRendererOne.startWidth = .1f;
-                 leftLineRendererOne.endWidth = .1f;
-                 leftLineRendererOne.SetPosition(0, randomPointOnLine);//newPoint);
-                 leftLineRendererOne.SetPosition(1, pointToLeft);//-pointToRight);//pointToLeft);// endPointToLeft);
-                 
-                 //RandomPointsForSubdivision.Add(randomPointOnLine);
-                // RandomPointsForSubdivision.Add(pointToLeft);
-                // j += 2;
-             }
-             
-             //RandomPointsForSubdivision.Add(randomPointOnLine);
-             //RandomPointsForSubdivision.Add(pointToRight);
+            List<Vector3> makeLines = new List<Vector3>();
+             makeLines.Add(randomPointOnLine);
+             makeLines.Add(pointToRight);
 
              //RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
-             //RandomPointsForSubdivision[i] = rightDistance;
-             //RandomPointsForSubdivision.Add(rightDistance);
-             //RandomPointsForSubdivision.Add(leftDistance);
-             
-             //RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);// this works but only for originally created line
-             //RandomPointsForSubdivision.Add(randomPointOnLine);// i think i need to make a loop out of these elements. maybe i need a subdivide method?
+             //RandomPointsForSubdivision.Add(randomPointOnLine);
              //RandomPointsForSubdivision.Add(pointToRight);
-             //RandomPointsForSubdivision.Add(pointToLeft);
-             
-             /*for (int j = 0; j <= RandomPointsForSubdivision.Count; j++) // this loop has same effect as above
-             {
-                 RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
-                 RandomPointsForSubdivision.Add(randomPointOnLine);
-                 RandomPointsForSubdivision.Add(pointToRight);
-                 RandomPointsForSubdivision.Add(randomPointOnLine);
-                 RandomPointsForSubdivision.Add(pointToLeft);
-                 //j += 2;
-             }*/
-             
-            // RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
-            // RandomPointsForSubdivision.Add(NewPointsForSubdivision[0]);
-            // RandomPointsForSubdivision.Add(NewPointsForSubdivision[1]);
-             
-           /* GameObject proGenRightLine = new GameObject("Pro Gen Line To Right"); 
+            
+            //List<GameObject> proGenLines = new List<GameObject>();
+            /*for (int j = 0; j < proGenLines.Count; j++)
+            {
+                proGenLines[j] = new GameObject("Pro Gen Line To Right"); 
+                //line.transform.position = RandomPosition;
+                LineRenderer rightLineRenderer = proGenLines[j].AddComponent<LineRenderer>();
+                rightLineRenderer.material = lineMaterial;
+                rightLineRenderer.startWidth = .1f;
+                rightLineRenderer.endWidth = .1f;
+                rightLineRenderer.SetPosition(0, RandomPointsForSubdivision[i]);//randomPointOnLine);//newPoint);
+                rightLineRenderer.SetPosition(1, RandomPointsForSubdivision[i +1]);//pointToRight);// endPointToLeft);
+            }*/
+            
+            GameObject proGenRightLine = new GameObject("Pro Gen Line To Right"); 
             //line.transform.position = RandomPosition;
             LineRenderer rightLineRenderer = proGenRightLine.AddComponent<LineRenderer>();
             rightLineRenderer.material = lineMaterial;
             rightLineRenderer.startWidth = .1f;
             rightLineRenderer.endWidth = .1f;
-            rightLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
-            rightLineRenderer.SetPosition(1, pointToRight);// endPointToLeft);
+            rightLineRenderer.SetPosition(0, randomPointOnLine);//RandomPointsForSubdivision [RandomPointsForSubdivision.Count - 2]);//makeLines[makeLines.Count -2]);//RandomPointsForSubdivision[i]);//randomPointOnLine);//newPoint);
+            rightLineRenderer.SetPosition(1, pointToRight);//RandomPointsForSubdivision [RandomPointsForSubdivision.Count - 1]);//makeLines[makeLines.Count -1]);//RandomPointsForSubdivision[i +1]);//pointToRight);// endPointToLeft);*/
+            i++;
 
-            GameObject proGenLeftLine = new GameObject("Pro Gen Line To Right"); 
-            //line.transform.position = RandomPosition;
-            LineRenderer leftLineRenderer = proGenLeftLine.AddComponent<LineRenderer>();
-            leftLineRenderer.material = lineMaterial;
-            leftLineRenderer.startWidth = .1f;
-            leftLineRenderer.endWidth = .1f;
-            leftLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
-            leftLineRenderer.SetPosition(1, pointToLeft);//-pointToRight);//pointToLeft);// endPointToLeft);*///this is original and works
+            //RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
+            //RandomPointsForSubdivision.Add(NewPointsForSubdivision[i]);
+
+            /*for (int j = 0; j < NewPointsForSubdivision.Count - 1; j++)
+            //foreach (var street in RandomPointsForSubdivision)//doesnt seem to help
+            {
+                GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right"); 
+                //line.transform.position = RandomPosition;
+                LineRenderer rightLineRendererOne = proGenRightLineOne.AddComponent<LineRenderer>();
+                rightLineRendererOne.material = lineMaterial;
+                rightLineRendererOne.startWidth = .1f;
+                rightLineRendererOne.endWidth = .1f;
+                rightLineRendererOne.SetPosition(0, NewPointsForSubdivision[j]);//newPoint);
+                rightLineRendererOne.SetPosition(1, NewPointsForSubdivision[j+1]);// endPointToLeft);
+                
+                RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count); //doesnt work in this loop
+                //RandomPointsForSubdivision.Add(street);
+                RandomPointsForSubdivision.Add(NewPointsForSubdivision[j]);
+                RandomPointsForSubdivision.Add(NewPointsForSubdivision[j+1]);
+
+                //SavedPairedPoints.RemoveRange(0,SavedPairedPoints.Count);
+                //SavedPairedPoints.Add(randomPointOnLine);
+                //SavedPairedPoints.Add(pointToRight);
+                //SavedPairedPoints.Add(randomPointOnLine);
+                //SavedPairedPoints.Add(pointToLeft);
+                
+                //NewPointsForSubdivision.Remove(i);
+                
+                //RandomPointsForSubdivision.Add(randomPointOnLine);
+                //RandomPointsForSubdivision.Add(pointToRight);
+                //j += 2;
+
+                //RandomPointsForSubdivision[lineIndex] = i;
+                //lineIndex += 2;
+                
+                GameObject proGenLeftLineOne = new GameObject("Pro Gen Line To Right"); 
+                //line.transform.position = RandomPosition;
+                LineRenderer leftLineRendererOne = proGenLeftLineOne.AddComponent<LineRenderer>();
+                leftLineRendererOne.material = lineMaterial;
+                leftLineRendererOne.startWidth = .1f;
+                leftLineRendererOne.endWidth = .1f;
+                //leftLineRendererOne.SetPosition(0, NewPointsForSubdivision[j]);//randomPointOnLine);//newPoint);
+                //leftLineRendererOne.SetPosition(1, NewPointsForSubdivision[j + 2]);//pointToLeft);//-pointToRight);//pointToLeft);// endPointToLeft);
+                
+                //RandomPointsForSubdivision.Add(randomPointOnLine);
+               // RandomPointsForSubdivision.Add(pointToLeft);
+               // j += 2;
+            }
+            RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count); //doesnt work in this loop
+            //RandomPointsForSubdivision.Add(street);
+            RandomPointsForSubdivision.Add(NewPointsForSubdivision[0]);
+            RandomPointsForSubdivision.Add(NewPointsForSubdivision[1]);*/
+
+            //RandomPointsForSubdivision.Add(randomPointOnLine);
+            //RandomPointsForSubdivision.Add(pointToRight);
+
+            //RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
+            //RandomPointsForSubdivision[i] = rightDistance;
+            //RandomPointsForSubdivision.Add(rightDistance);
+            //RandomPointsForSubdivision.Add(leftDistance);
+
+            //RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);// this works but only for originally created line
+            //RandomPointsForSubdivision.Add(randomPointOnLine);// i think i need to make a loop out of these elements. maybe i need a subdivide method?
+            //RandomPointsForSubdivision.Add(pointToRight);
+            //RandomPointsForSubdivision.Add(pointToLeft);
+
+            /*for (int j = 0; j <= RandomPointsForSubdivision.Count; j++) // this loop has same effect as above
+            {
+                RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
+                RandomPointsForSubdivision.Add(randomPointOnLine);
+                RandomPointsForSubdivision.Add(pointToRight);
+                RandomPointsForSubdivision.Add(randomPointOnLine);
+                RandomPointsForSubdivision.Add(pointToLeft);
+                //j += 2;
+            }*/
+
+            // RandomPointsForSubdivision.RemoveRange(0,RandomPointsForSubdivision.Count);
+            // RandomPointsForSubdivision.Add(NewPointsForSubdivision[0]);
+            // RandomPointsForSubdivision.Add(NewPointsForSubdivision[1]);
+
+            /* GameObject proGenRightLine = new GameObject("Pro Gen Line To Right"); 
+             //line.transform.position = RandomPosition;
+             LineRenderer rightLineRenderer = proGenRightLine.AddComponent<LineRenderer>();
+             rightLineRenderer.material = lineMaterial;
+             rightLineRenderer.startWidth = .1f;
+             rightLineRenderer.endWidth = .1f;
+             rightLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
+             rightLineRenderer.SetPosition(1, pointToRight);// endPointToLeft);
+ 
+             GameObject proGenLeftLine = new GameObject("Pro Gen Line To Right"); 
+             //line.transform.position = RandomPosition;
+             LineRenderer leftLineRenderer = proGenLeftLine.AddComponent<LineRenderer>();
+             leftLineRenderer.material = lineMaterial;
+             leftLineRenderer.startWidth = .1f;
+             leftLineRenderer.endWidth = .1f;
+             leftLineRenderer.SetPosition(0, randomPointOnLine);//newPoint);
+             leftLineRenderer.SetPosition(1, pointToLeft);//-pointToRight);//pointToLeft);// endPointToLeft);*/
+            //this is original and works
 
             // RandomPointsForSubdivision[i] = rightDistance;
 
-            i++; // dont know exactly what this doing or if I need it
-           // i += 1; // breaks game when more items added to list
-          // i += 2;// game doesnt crash when items added with this, but doesnt work like i want
+            //i++; // dont know exactly what this doing or if I need it
+            // i += 1; // breaks game when more items added to list
+            // i += 2;// game doesnt crash when items added with this, but doesnt work like i want
         }
         
         

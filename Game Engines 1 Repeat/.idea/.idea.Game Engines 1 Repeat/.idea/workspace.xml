@@ -4,7 +4,7 @@
     <list default="true" id="f2aa06b7-d800-469a-a0cf-8ae28d977402" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickStreets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickStreets.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreetLine City.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreetLine City.unity" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,6 +36,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/LastLines.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AddMousePoints.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickStreets.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickCity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/DrawLineAgain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/Lines.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AMultiLine.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,6 +80,7 @@
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AMultiLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickStreets.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickCity.cs" />
       </list>
     </option>
   </component>
@@ -118,7 +120,8 @@
       <workItem from="1595680532099" duration="15504000" />
       <workItem from="1595711478748" duration="1545000" />
       <workItem from="1595766288762" duration="44322000" />
-      <workItem from="1595849186795" duration="22851000" />
+      <workItem from="1595849186795" duration="23265000" />
+      <workItem from="1595928330295" duration="37990000" />
     </task>
     <servers />
   </component>

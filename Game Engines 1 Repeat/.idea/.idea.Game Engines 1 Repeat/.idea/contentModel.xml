@@ -13,6 +13,7 @@
               <e p="AddMousePoints.cs" t="Include" />
               <e p="AddPoints.cs" t="Include" />
               <e p="AMultiLine.cs" t="Include" />
+              <e p="ClickCity.cs" t="Include" />
               <e p="ClickLine.cs" t="Include" />
               <e p="ClickStreets.cs" t="Include" />
               <e p="Conexion.cs" t="Include" />
