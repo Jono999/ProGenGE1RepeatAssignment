@@ -218,8 +218,8 @@ public class ClickStreets : MonoBehaviour
              NewPointsForSubdivision.Add(pointToLeft);
 
              //for (int j = 0; j < NewPointsForSubdivision.Count; j++)
-             foreach (var street in RandomPointsForSubdivision)//doesnt seem to help
-             {
+            // foreach (var street in RandomPointsForSubdivision)//doesnt seem to help
+            // {
                  GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right"); 
                  //line.transform.position = RandomPosition;
                  LineRenderer rightLineRendererOne = proGenRightLineOne.AddComponent<LineRenderer>();
@@ -260,7 +260,7 @@ public class ClickStreets : MonoBehaviour
                  //RandomPointsForSubdivision.Add(randomPointOnLine);
                 // RandomPointsForSubdivision.Add(pointToLeft);
                 // j += 2;
-             }
+            // }
              
              //RandomPointsForSubdivision.Add(randomPointOnLine);
              //RandomPointsForSubdivision.Add(pointToRight);

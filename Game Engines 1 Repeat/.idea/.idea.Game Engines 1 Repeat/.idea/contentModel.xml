@@ -9,11 +9,15 @@
         <e p="Scenes" t="Include">
           <e p="CityScene" t="Include">
             <e p="City Scripts" t="Include">
+              <e p="AClickCity.cs" t="Include" />
+              <e p="AClickityCity.cs" t="Include" />
               <e p="AddCityCentre.cs" t="Include" />
               <e p="AddMousePoints.cs" t="Include" />
               <e p="AddPoints.cs" t="Include" />
               <e p="AMultiLine.cs" t="Include" />
+              <e p="ClickA.cs" t="Include" />
               <e p="ClickCity.cs" t="Include" />
+              <e p="ClicketySplit.cs" t="Include" />
               <e p="ClickLine.cs" t="Include" />
               <e p="ClickStreets.cs" t="Include" />
               <e p="Conexion.cs" t="Include" />
