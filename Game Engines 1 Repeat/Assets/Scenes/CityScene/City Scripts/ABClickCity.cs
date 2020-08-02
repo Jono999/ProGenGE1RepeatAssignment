@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
-public class AClickCity : MonoBehaviour
+public class ABClickCity : MonoBehaviour
 {
 
     //private List<GameObject> pointsObjects;
     bool theFirstListHasBeenDrawn = false;
     bool theSecondListHasBeenDrawn = false;
     
+    List<Vector3> FirstPointsForSubdivision = new List<Vector3>();
     List<Vector3> SecondPointsForSubdivision = new List<Vector3>();
     List<Vector3> ThirdPointsForSubdivision = new List<Vector3>();
     
@@ -50,12 +50,15 @@ public class AClickCity : MonoBehaviour
         {
             if (!theFirstListHasBeenDrawn)
             {
-                MakeSetAndSubdivideEverythingInItOne();
+                //MakeSetAndSubdivideEverythingInItOne();
+                ControlPoints(FirstPointsForSubdivision);
             }
             
             else if (theFirstListHasBeenDrawn && !theSecondListHasBeenDrawn)
             {
                 MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
+                
+                ControlPoints(FirstPointsForSubdivision);
                
                // MakeSetAndSubdivideEverythingInItOne();
             }
@@ -64,8 +67,12 @@ public class AClickCity : MonoBehaviour
             {
                 MakeSetAndSubdivideEverythingInItThree(ThirdPointsForSubdivision);
                 
-               // MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
-               // MakeSetAndSubdivideEverythingInItOne();
+                ControlPoints(FirstPointsForSubdivision);
+                
+                MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
+                
+                //MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
+                //MakeSetAndSubdivideEverythingInItOne();
                 //MakeSetAndSubdivideEverythingInItOne();
             }
         }
@@ -94,6 +101,8 @@ public class AClickCity : MonoBehaviour
             TempSavedPairedPoints.Add(startPoint);
             SavedPairedPoints.Add(startPoint);
             RandomPointsForSubdivision.Add(startPoint);
+            
+            FirstPointsForSubdivision.Add(startPoint);
 
             pairOfPoints[0] = startPoint;
 
@@ -117,6 +126,8 @@ public class AClickCity : MonoBehaviour
         TempSavedPairedPoints.Add(endPoint);
         SavedPairedPoints.Add(endPoint);
         RandomPointsForSubdivision.Add(endPoint);
+        
+        FirstPointsForSubdivision.Add(endPoint);
 
         pairOfPoints[1] = endPoint;
 
@@ -158,8 +169,7 @@ public class AClickCity : MonoBehaviour
                 Vector3 randomPointForRightLine = Vector3.Lerp(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i + 1], Random.value); // 0.3f);
                 Vector3 randomPointForLeftLine = Vector3.Lerp(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i + 1], Random.value);
 
-                float floatDistance =
-                    Vector3.Distance(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i + 1]);
+                float floatDistance = Vector3.Distance(RandomPointsForSubdivision[i], RandomPointsForSubdivision[i + 1]);
 
                 Vector3 pointToRight = randomPointForRightLine + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                        * (RandomPointsForSubdivision[i + 1] - randomPointForRightLine).normalized
@@ -367,7 +377,7 @@ public class AClickCity : MonoBehaviour
         }
     }
 
-    public void ControlPoints(List<Vector3>linesToBeSubdivided)
+    public void ControlPoints(List<Vector3>TheFirstList)
     {
         // I want to make it so several random lines can be drawn all along any line but never from same point
         // The possibility to spawn these new lines ideally should depend on the length of the line being spawned from *
@@ -384,21 +394,21 @@ public class AClickCity : MonoBehaviour
         // buildings will need to spawn at these points plus a certain distance from the point so as to separate from line
         // i can develop a function that takes in x amount of lists and spawns buildings at all of the points on these lists
 
-        List<Vector3> AllPoints = new List<Vector3>();
-        
-        for (int i = 0; i < linesToBeSubdivided.Count - 1; i++)
+       // List<Vector3> AllPoints = new List<Vector3>();
+
+        for (int i = 0; i < TheFirstList.Count - 1; i++)
         {
-            Vector3 onePoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.1f);
-            Vector3 twoPoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.2f);
-            Vector3 threePoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.3f);
-            Vector3 fourPoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.4f);
-            Vector3 fivePoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.5f);
-            Vector3 sixPoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.6f);
-            Vector3 sevenPoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.7f);
-            Vector3 eightPoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.8f);
-            Vector3 ninePoint = Vector3.Lerp(linesToBeSubdivided[i], linesToBeSubdivided[i + 1], 0.9f);
-            
-            //List<Vector3> AllPoints = new List<Vector3>();
+            Vector3 onePoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.1f);
+            Vector3 twoPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.2f);
+            Vector3 threePoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.3f);
+            Vector3 fourPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.4f);
+            Vector3 fivePoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.5f);
+            Vector3 sixPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.6f);
+            Vector3 sevenPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.7f);
+            Vector3 eightPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.8f);
+            Vector3 ninePoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.9f);
+
+            List<Vector3> AllPoints = new List<Vector3>();
             AllPoints.Add(onePoint);
             AllPoints.Add(twoPoint);
             AllPoints.Add(threePoint);
@@ -408,41 +418,55 @@ public class AClickCity : MonoBehaviour
             AllPoints.Add(sevenPoint);
             AllPoints.Add(eightPoint);
             AllPoints.Add(ninePoint);
-                
-                // below is not functional for what i want// no longer true
-                // do i need two separate for loops or nested for loops or just one for loop?//not sure
-                // like function below, remove x amount of numbers and add to list for subdivision// just subject them to subdivision, no new list
-                // the leftovers get added to a temp list to be held for further subdivision//nope
-                // whatever is left after subdivision is used to spawn buildings//yep but how
-                // so i have a max of nine spawn points on each side of the line//ok
-                // so a max of five road spawn points i think should be good then min four leftover for buildings//ok
-                
-                int randomRightIndex = Random.Range(0, AllPoints.Count - 1);   
-                Vector3 chosenRightPoint = AllPoints[randomRightIndex];   
-                AllPoints.RemoveAt(randomRightIndex);  
-                int randomLeftIndex = Random.Range(0, AllPoints.Count - 1);   
-                Vector3 chosenLeftPoint = AllPoints[randomLeftIndex];   
-                AllPoints.RemoveAt(randomLeftIndex);
-                //  Loop lines 10-13 as many times as needed
 
-                float floatDistance = Vector3.Distance(linesToBeSubdivided[i], linesToBeSubdivided[i + 1]);
+            //i++;
+        //}
+
+        // below is not functional for what i want// no longer true
+            // do i need two separate for loops or nested for loops or just one for loop?//not sure
+            // like function below, remove x amount of numbers and add to list for subdivision// just subject them to subdivision, no new list
+            // the leftovers get added to a temp list to be held for further subdivision//nope
+            // whatever is left after subdivision is used to spawn buildings//yep but how
+            // so i have a max of nine spawn points on each side of the line//ok
+            // so a max of five road spawn points i think should be good then min four leftover for buildings//ok
+            
+           // for (int i = 0; i < TheFirstList.Count - 1; i++)
+           // {
+            int randomRightIndex = Random.Range(0, AllPoints.Count - 1);
+            Vector3 chosenRightPoint = AllPoints[randomRightIndex];
+            AllPoints.RemoveAt(randomRightIndex);
+            int randomLeftIndex = Random.Range(0, AllPoints.Count - 1);
+            Vector3 chosenLeftPoint = AllPoints[randomLeftIndex];
+            AllPoints.RemoveAt(randomLeftIndex);
+            //  Loop lines 10-13 as many times as needed
+        
+
+        float floatDistance = Vector3.Distance(TheFirstList[i], TheFirstList[i + 1]);
            
           //Vector3 randomLength = new Vector3(Mathf.Lerp(minimum, maximum, t), 0, 0); // maybe useful in an alternative structure
 
-           if (AllPoints.Count <= 5 && floatDistance > 3) // this statement might need to just include drawing lines alone
-           {
+          // if (AllPoints.Count <= 5 && floatDistance > 3) // this statement might need to just include drawing lines alone
+          // {
                //float floatDistance = Vector3.Distance(linesToBeSubdivided[i], linesToBeSubdivided[i + 1]);
 
                Vector3 pointToRight = chosenRightPoint + Quaternion.AngleAxis(90.0f, Vector3.forward)
-                                      * (linesToBeSubdivided[i + 1] - chosenRightPoint).normalized
+                                      * (TheFirstList[i + 1] - chosenRightPoint).normalized
                                       * (floatDistance / 3);//(floatDistance / 3);//
 
                Vector3 pointToLeft = chosenLeftPoint + Quaternion.AngleAxis(-90.0f, Vector3.forward)
-                                     * (linesToBeSubdivided[i + 1] - chosenLeftPoint).normalized
+                                     * (TheFirstList[i + 1] - chosenLeftPoint).normalized
                                      * (floatDistance / 3);//(floatDistance / 3);
                
-               Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
-               Vector3 randomLeftLength = Vector3.Lerp(chosenRightPoint, pointToLeft, Random.value);
+               //Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
+               //Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value);//mistake might be in the order here
+               
+               Vector3 randomRightLength = Vector3.Lerp(pointToRight, chosenRightPoint, Random.value); // Reversed the equation
+               Vector3 randomLeftLength = Vector3.Lerp(pointToLeft, chosenLeftPoint, Random.value);// makes no difference
+               
+               SecondPointsForSubdivision.Add(randomRightLength); // this and next result in desired behaviour unexpectedly but only if one original line created
+               SecondPointsForSubdivision.Add(chosenRightPoint);
+               SecondPointsForSubdivision.Add(randomLeftLength);// probably
+               SecondPointsForSubdivision.Add(chosenLeftPoint);
 
                GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right");
                //line.transform.position = RandomPosition;
@@ -450,8 +474,8 @@ public class AClickCity : MonoBehaviour
                rightLineRendererOne.material = lineMaterial;
                rightLineRendererOne.startWidth = .05f;
                rightLineRendererOne.endWidth = .05f;
-               rightLineRendererOne.SetPosition(0, chosenRightPoint); //newPoint);
-               rightLineRendererOne.SetPosition(1, randomRightLength); // endPointToLeft);
+               rightLineRendererOne.SetPosition(0, randomRightLength); //newPoint);
+               rightLineRendererOne.SetPosition(1, chosenRightPoint); // endPointToLeft);
 
                GameObject proGenLeftLineOne = new GameObject("Pro Gen Line To Right");
                //line.transform.position = RandomPosition;
@@ -459,13 +483,14 @@ public class AClickCity : MonoBehaviour
                leftLineRendererOne.material = lineMaterial;
                leftLineRendererOne.startWidth = .05f;
                leftLineRendererOne.endWidth = .05f;
-               leftLineRendererOne.SetPosition(0, chosenLeftPoint); //newPoint);
-               leftLineRendererOne.SetPosition(1, randomLeftLength); //-pointToRight);//pointToLeft);// endPointToLeft);
-           }
+               leftLineRendererOne.SetPosition(0, randomLeftLength); //newPoint);
+               leftLineRendererOne.SetPosition(1, chosenLeftPoint); //-pointToRight);//pointToLeft);// endPointToLeft);
+           //}
 
            i++;
-          
-        }
+           //i += randomLeftIndex + randomRightIndex;
+            }
+        theFirstListHasBeenDrawn = true;
             
     }
     public static T[] GetRandomArray<T>(T[] array, int size)
