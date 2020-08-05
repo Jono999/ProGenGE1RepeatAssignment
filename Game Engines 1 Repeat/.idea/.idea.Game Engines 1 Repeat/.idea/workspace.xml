@@ -4,6 +4,11 @@
     <list default="true" id="f2aa06b7-d800-469a-a0cf-8ae28d977402" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BlackMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BlackMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/TestMaterial 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/TestMaterial 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ABClickCity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ABClickCity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AClickCity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AClickCity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/StreetLine City.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/StreetLine City.unity" afterDir="false" />
     </list>
@@ -12,6 +17,23 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Game Engines 1 Repeat" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -35,6 +57,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ABClickCity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/Intersection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AACLICKCITY.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/LastLines.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AddMousePoints.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AClickCity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -48,6 +71,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/MeshScene/Mesh Scripts/Face.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/Conexion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/DrawLine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/MeshScene/Mesh Scripts/Plane.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/MousePositionOnClick.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ClickA.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -91,6 +115,7 @@
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AClickityCity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AClickCity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/ABClickCity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AACLICKCITY.cs" />
       </list>
     </option>
   </component>
@@ -101,6 +126,7 @@
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -139,7 +165,13 @@
       <workItem from="1596293277058" duration="1690000" />
       <workItem from="1596311907979" duration="7464000" />
       <workItem from="1596321878392" duration="4201000" />
-      <workItem from="1596369661617" duration="16698000" />
+      <workItem from="1596369661617" duration="18428000" />
+      <workItem from="1596407836650" duration="13813000" />
+      <workItem from="1596468508425" duration="11287000" />
+      <workItem from="1596539832918" duration="14253000" />
+      <workItem from="1596578950968" duration="12708000" />
+      <workItem from="1596621888198" duration="5756000" />
+      <workItem from="1596639077931" duration="8766000" />
     </task>
     <servers />
   </component>

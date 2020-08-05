@@ -9,6 +9,7 @@
         <e p="Scenes" t="Include">
           <e p="CityScene" t="Include">
             <e p="City Scripts" t="Include">
+              <e p="AACLICKCITY.cs" t="Include" />
               <e p="ABClickCity.cs" t="Include" />
               <e p="AClickCity.cs" t="Include" />
               <e p="AClickityCity.cs" t="Include" />

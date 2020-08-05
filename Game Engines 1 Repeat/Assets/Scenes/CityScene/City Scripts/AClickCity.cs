@@ -64,7 +64,7 @@ public class AClickCity : MonoBehaviour
             {
                 MakeSetAndSubdivideEverythingInItThree(ThirdPointsForSubdivision);
                 
-               // MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
+                //MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
                // MakeSetAndSubdivideEverythingInItOne();
                 //MakeSetAndSubdivideEverythingInItOne();
             }
@@ -341,6 +341,8 @@ public class AClickCity : MonoBehaviour
             //theSecondListHasBeenDrawn = true;
         }
         //theSecondListHasBeenDrawn = true;
+        theFirstListHasBeenDrawn = false; // THIS AND NEXT ARE VERY NEW, USED TO SEQUENTIALISE ORDER OF PLACEMENT TESTING FOR ABCLICKCITY
+        theSecondListHasBeenDrawn = false;
     }
     
     
