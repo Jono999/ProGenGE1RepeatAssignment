@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AACLICKCITY : MonoBehaviour
+public class AAAAClickCity : MonoBehaviour
 {
     //private List<GameObject> pointsObjects;
     bool theFirstListHasBeenDrawn = false;
@@ -28,13 +28,27 @@ public class AACLICKCITY : MonoBehaviour
     public Vector3 mousePosOne;
     public Vector3 mousePosTwo;
 
-    public Material leftLineMaterial;
-    public Material rightLineMaterial;
-
     public Material[] RoadMaterials = new Material[4];
     public Material[] HouseMaterials = new Material[3];
 
     private Vector3[] pairOfPoints;
+    
+    public AudioSource[] myAudioClips;
+
+   // private bool destroySelf = true;
+
+   /* public void OnCollisionEnter(Collider other)
+    {
+        if (other.tag == "House" || other.tag == "Line")
+        {
+            if (destroySelf)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        Destroy(this);
+    }*/
 
     // Start is called before the first frame update
     void Start()
@@ -49,35 +63,30 @@ public class AACLICKCITY : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            StartCoroutine(SpawnBuildings(ListToSpawnBuildings));
-            //SpawnBuildings(ListToSpawnBuildings);
+            SpawnBuildings(ListToSpawnBuildings);
         }
         
         if (Input.GetKeyDown("space"))
         {
             if (!theFirstListHasBeenDrawn && overallSubdivisionControl)
             {
-                //MakeSetAndSubdivideEverythingInItOne();
-                
-                ControlPoints(FirstPointsForSubdivision);
+                  ControlPoints(FirstPointsForSubdivision);
                 
                 //ListToAssignPoints(FirstPointsForSubdivision);
             }
             
             else if (theFirstListHasBeenDrawn && !theSecondListHasBeenDrawn && overallSubdivisionControl)
             {
-               // ControlPoints(FirstPointsForSubdivision);
+                //ControlPoints(FirstPointsForSubdivision);
                 
                 MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
-
-                // MakeSetAndSubdivideEverythingInItOne();
             }
             
             else if (theFirstListHasBeenDrawn && theSecondListHasBeenDrawn && overallSubdivisionControl)
             {
                // ControlPoints(FirstPointsForSubdivision);
 
-              //  MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
+               // MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
                 
                 MakeSetAndSubdivideEverythingInItThree(ThirdPointsForSubdivision);
 
@@ -149,10 +158,8 @@ public class AACLICKCITY : MonoBehaviour
         pointOneIsSet = false;
     }
 
-    public IEnumerator SpawnBuildings(List<Vector3> HousePoints)
+    public void SpawnBuildings(List<Vector3> HousePoints)
     {
-        WaitForSeconds wait = new WaitForSeconds(0.1f);
-        
         for (int i = 0; i < HousePoints.Count - 1; i++)
         {
             Vector3 pointToRight = HousePoints[i] + Quaternion.AngleAxis(90.0f, Vector3.forward)
@@ -183,34 +190,55 @@ public class AACLICKCITY : MonoBehaviour
                                * leftDistance / 5;
             
             //++i;
+           // HousePoints.RemoveRange(HousePoints.Count,HousePoints.Count - 1);
 
+                     
                      GameObject HouseRight = new GameObject("House Right");
                      //HouseRight.transform.position = HousePoints[i];
                      LineRenderer rightLineRendererOne = HouseRight.AddComponent<LineRenderer>();
+                     
+                    /* rightLineRendererOne.tag = "House";
+                     BoxCollider rightCollider = HouseRight.AddComponent<BoxCollider>();
+                     //collider.transform.position = HousePoints[i];
+                     float rightLineLength = Vector3.Distance(rightStart, rightStop);
+                     rightCollider.size = new Vector3(rightLineLength, .1f, .1f);
+                     Vector3 rightMidPoint = (rightStart + rightStop) / 2;
+                     rightCollider.transform.position = rightMidPoint;*/
+                     
                      rightLineRendererOne.material = HouseMaterials [Random.Range(0, HouseMaterials.Length)];
                      rightLineRendererOne.startWidth = .1f;
                      rightLineRendererOne.endWidth = .1f;
                      rightLineRendererOne.SetPosition(0, rightStart);//HousePoints[i]);
                      rightLineRendererOne.SetPosition(1, rightStop);
-                     
-                     yield return wait;
+
+                     //OnCollisionEnter(rightCollider);
 
                      GameObject HouseLeft = new GameObject("House Left");
                      //line.transform.position = RandomPosition;
                      LineRenderer leftLineRendererOne = HouseLeft.AddComponent<LineRenderer>();
+                     
+                    /* leftLineRendererOne.tag = "House";
+                     BoxCollider leftCollider = HouseRight.AddComponent<BoxCollider>();
+                     //collider.transform.position = HousePoints[i];
+                     float leftLineLength = Vector3.Distance(leftStart, leftStop);
+                     leftCollider.size = new Vector3(leftLineLength, .1f, .1f);
+                     Vector3 leftMidPoint = (leftStart + leftStop) / 2;
+                     leftCollider.transform.position = leftMidPoint;*/
+                     
                      leftLineRendererOne.material = HouseMaterials [Random.Range(0, HouseMaterials.Length)];
                      leftLineRendererOne.startWidth = .1f;
                      leftLineRendererOne.endWidth = .1f;
                      leftLineRendererOne.SetPosition(0, leftStart); //newPoint);
                      leftLineRendererOne.SetPosition(1, leftStop); //-pointToRight);//pointToLeft);// endPointToLeft);*/
                      
-                     yield return wait;
+                    // OnCollisionEnter(leftCollider);
 
                  // Debug.Log(HousePoints.Count);
                   //Debug.Log("the index is" + randomRightIndex);
                   
-                  //i++;
+                  i++;
                   
+                  //HousePoints.RemoveRange(0,HousePoints.Count);
         }
         //theFirstListHasBeenDrawn = true;
         HousePoints.RemoveRange(0,HousePoints.Count);
@@ -246,14 +274,18 @@ public class AACLICKCITY : MonoBehaviour
             Vector3 eightPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.8f);
             Vector3 ninePoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 0.9f);
             Vector3 tenPoint = Vector3.Lerp(TheFirstList[i], TheFirstList[i + 1], 1.0f);
+
+            Vector3 firstofEight = Vector3.Lerp(zeroPoint, onePoint, .01f);
             
-            //add all of the above to road list then create vectors between each point,
-            //divide those into the 8 points between each pair and use those points to populate the housepoints list. 
-            // so far what i have works well enough for one rotation, try and make this one rotation repeat sequentially
+            // add all of the above to road list then create vectors between each point,
+            // divide those vectors into x amount of points between each pair and use those points to populate the housepoints list. 
+            // so far what i have works well enough for one rotation, try and make this a one rolling rotation that repeats sequentially
+            // so after one full rotation then first lines get subdivided again, then second again, then third if possible, then first again
             // the few lines of code below should work better for implementing house placement more properly
             // if i add every line made in every function to one overall list then surely
             // I can check that list for duplicates and crossovers and delete them
             // write some code to parameterise the length of lines drawn so they are only ever too short to further subdivide by third subdivision
+            // regard the functionionality between tempsavedpoints and pointsforsubdivision, this may be useful for buildings etc.
 
             List<Vector3> AllPoints = new List<Vector3>();
             
@@ -301,8 +333,6 @@ public class AACLICKCITY : MonoBehaviour
          // {
               //float floatDistance = Vector3.Distance(linesToBeSubdivided[i], linesToBeSubdivided[i + 1]);
 
-              if (minDistance > 1) // this min distance control does give a better effect but still behaviour not quite what i want
-              {
               Vector3 pointToRight = chosenRightPoint + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                      * (TheFirstList[i + 1] - chosenRightPoint).normalized
                                      * (floatDistance / 2); //(floatDistance / 3);//
@@ -314,8 +344,11 @@ public class AACLICKCITY : MonoBehaviour
               //Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
               //Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value);//mistake might be in the order here
 
-              Vector3 randomRightLength = Vector3.Lerp(pointToRight, chosenRightPoint, Random.value); // Reversed the equation
-              Vector3 randomLeftLength = Vector3.Lerp(pointToLeft, chosenLeftPoint, Random.value); // makes no difference
+              Vector3 randomRightLength = Vector3.Lerp(pointToRight, chosenRightPoint, Random.Range(minDistance, floatDistance));
+              Vector3 randomLeftLength = Vector3.Lerp(pointToLeft, chosenLeftPoint, Random.Range(minDistance, floatDistance));
+              
+              //Vector3 randomRightLength = Vector3.Lerp(pointToRight, chosenRightPoint, Random.value); // Reversed the equation
+             // Vector3 randomLeftLength = Vector3.Lerp(pointToLeft, chosenLeftPoint, Random.value); // makes no difference
 
               SecondPointsForSubdivision.Add(randomRightLength); // this and next result in desired behaviour unexpectedly but only if one original line created
               SecondPointsForSubdivision.Add(chosenRightPoint);
@@ -325,8 +358,8 @@ public class AACLICKCITY : MonoBehaviour
               //if (AllPoints.Count <= 5 && floatDistance > 2) // this statement might need to just include drawing lines alone
               // {
 
-             // if (minDistance > 1) // this min distance control does give a better effect but still behaviour not quite what i want
-             // {
+              if (minDistance > 1) // this min distance control does give a better effect but still behaviour not quite what i want
+              {
                   GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right");
                   //line.transform.position = RandomPosition;
                   LineRenderer rightLineRendererOne = proGenRightLineOne.AddComponent<LineRenderer>();
@@ -347,8 +380,7 @@ public class AACLICKCITY : MonoBehaviour
                   leftLineRendererOne.startWidth = .05f;
                   leftLineRendererOne.endWidth = .05f;
                   leftLineRendererOne.SetPosition(0, randomLeftLength); //newPoint);
-                  leftLineRendererOne.SetPosition(1,
-                      chosenLeftPoint); //-pointToRight);//pointToLeft);// endPointToLeft);
+                  leftLineRendererOne.SetPosition(1, chosenLeftPoint); //-pointToRight);//pointToLeft);// endPointToLeft);
 
                   Debug.Log(AllPoints.Count);
                   Debug.Log("the index is " + randomRightIndex);
@@ -371,6 +403,7 @@ public class AACLICKCITY : MonoBehaviour
            //i += randomLeftIndex + randomRightIndex;
             }
         theFirstListHasBeenDrawn = true;// - put back in once building spawning is sorted
+        TheFirstList.RemoveRange(0,TheFirstList.Count);
         
         Debug.Log("first drawn");
     }
@@ -414,9 +447,6 @@ public class AACLICKCITY : MonoBehaviour
 
             float floatDistance = Vector3.Distance(TheSecondList[i], TheSecondList[i + 1]);
             float minDistance = floatDistance / 2;
-            
-            if (minDistance > 1) // this min distance control does give a better effect but still behaviour not quite what i want
-            {
 
                 Vector3 pointToRight = chosenRightPoint + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                        * (TheSecondList[i + 1] - chosenRightPoint).normalized
@@ -425,17 +455,20 @@ public class AACLICKCITY : MonoBehaviour
                 Vector3 pointToLeft = chosenLeftPoint + Quaternion.AngleAxis(-90.0f, Vector3.forward)
                                       * (TheSecondList[i + 1] - chosenLeftPoint).normalized
                                       * (floatDistance / 2); //);//(floatDistance / 3);
+                
+                Vector3 randomRightLength = Vector3.Lerp(pointToRight, chosenRightPoint, Random.Range(floatDistance, minDistance));
+                Vector3 randomLeftLength = Vector3.Lerp(pointToLeft, chosenLeftPoint, Random.Range(floatDistance, minDistance));
 
-                Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
-                Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value); //mistake might be in the order here
+                //Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
+                //Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value); //mistake might be in the order here
 
                 ThirdPointsForSubdivision.Add(randomRightLength); // this and next result in desired behaviour unexpectedly but only if one original line created
                 ThirdPointsForSubdivision.Add(chosenRightPoint);
                 ThirdPointsForSubdivision.Add(randomLeftLength); // probably
                 ThirdPointsForSubdivision.Add(chosenLeftPoint);
 
-               // if (minDistance > 1)
-               // {
+                if (minDistance > 1)
+                {
                     GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right");
                     //line.transform.position = RandomPosition;
                     LineRenderer rightLineRendererOne = proGenRightLineOne.AddComponent<LineRenderer>();
@@ -460,6 +493,8 @@ public class AACLICKCITY : MonoBehaviour
         
         theFirstListHasBeenDrawn = false;
         Debug.Log("seconddrawn");
+        
+        TheSecondList.RemoveRange(0,TheSecondList.Count);
     }
 
     public void MakeSetAndSubdivideEverythingInItThree(List<Vector3> TheThirdList)
@@ -501,9 +536,7 @@ public class AACLICKCITY : MonoBehaviour
 
             float floatDistance = Vector3.Distance(TheThirdList[i], TheThirdList[i + 1]);
             float minDistance = floatDistance / 2;
-            
-            if (minDistance > 1) // this min distance control does give a better effect but still behaviour not quite what i want
-            {
+
                 Vector3 pointToRight = chosenRightPoint + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                        * (TheThirdList[i + 1] - chosenRightPoint).normalized
                                        * (floatDistance / 2); //(floatDistance / 3);//
@@ -511,12 +544,15 @@ public class AACLICKCITY : MonoBehaviour
                 Vector3 pointToLeft = chosenLeftPoint + Quaternion.AngleAxis(-90.0f, Vector3.forward)
                                       * (TheThirdList[i + 1] - chosenLeftPoint).normalized
                                       * (floatDistance / 2); //(floatDistance / 3);
+                
+                Vector3 randomRightLength = Vector3.Lerp(pointToRight, chosenRightPoint, Random.Range(floatDistance, minDistance));
+                Vector3 randomLeftLength = Vector3.Lerp(pointToLeft, chosenLeftPoint, Random.Range(floatDistance, minDistance));
 
-                Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
-                Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value); //mistake might be in the order here
+                //Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
+                //Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value); //mistake might be in the order here
 
-               // if (minDistance > 1)
-               // {
+                if (minDistance > 1)
+                {
                     GameObject proGenRightLineOne = new GameObject("Pro Gen Line To Right");
                     //line.transform.position = RandomPosition;
                     LineRenderer rightLineRendererOne = proGenRightLineOne.AddComponent<LineRenderer>();
@@ -548,6 +584,10 @@ public class AACLICKCITY : MonoBehaviour
          theSecondListHasBeenDrawn = false;
          Debug.Log("third drawn");
          
+         TheThirdList.RemoveRange(0, TheThirdList.Count);
+         
          //SecondPointsForSubdivision.RemoveRange(0, SecondPointsForSubdivision.Count);
     }
 }
+
+
