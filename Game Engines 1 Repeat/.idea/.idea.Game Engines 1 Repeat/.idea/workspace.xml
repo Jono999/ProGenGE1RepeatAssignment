@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2aa06b7-d800-469a-a0cf-8ae28d977402" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game Engines 1 Repeat/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AACLICKCITY.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/City Scripts/AACLICKCITY.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityScene/StreetLine City.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityScene/StreetLine City.unity" afterDir="false" />
+=======
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -176,6 +178,10 @@
       <workItem from="1596748960458" duration="660000" />
       <workItem from="1596754128281" duration="3649000" />
       <workItem from="1596797475587" duration="2322000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1598748864823" duration="8493000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
