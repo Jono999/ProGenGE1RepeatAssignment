@@ -37,26 +37,6 @@
               <e p="StreetLine.cs" t="Include" />
             </e>
           </e>
-          <e p="LsysScene" t="Include">
-            <e p="Lsystem Scripts" t="Include">
-              <e p="AgentParameters.cs" t="Include" />
-              <e p="Direction.cs" t="Include" />
-              <e p="LSystemGenerator.cs" t="Include" />
-              <e p="PlacementHelper.cs" t="Include" />
-              <e p="RHelpAlt.cs" t="Include" />
-              <e p="RoadHelper.cs" t="Include" />
-              <e p="Rule.cs" t="Include" />
-              <e p="SimpleVisualiser.cs" t="Include" />
-              <e p="Visualiser.cs" t="Include" />
-            </e>
-          </e>
-          <e p="MeshScene" t="Include">
-            <e p="Mesh Scripts" t="Include">
-              <e p="Face.cs" t="Include" />
-              <e p="Plane.cs" t="Include" />
-              <e p="ProGenPlane.cs" t="Include" />
-            </e>
-          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
