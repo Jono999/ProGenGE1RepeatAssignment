@@ -10,7 +10,7 @@ ProGenGE1RepeatAssignment
     Windows Key, Alt and R to take a video. This is how you can capture videos if you are on a Mac. Also you can use OBS.
 
 
-Hi Brian, the final edit of this project is on a branch called final edit, I don't seem to be able to resolve some merge conflicts which is preventing me from getting it onto the master
+Hi Bryan, the final edit of this project is on a branch called final edit, I don't seem to be able to resolve some merge conflicts which is preventing me from getting it onto the master
 
 For this assignment I have attempted to develop a procedurally generated city grid, taking inspiration from this video; https://www.youtube.com/watch?v=zBDrH3lg4YY
 I developed the entire system myself and figured out what the workings of it would be between my head and a few scraps of paper, however all of the code is wrangled from all across the internet and mangled together in my own special way. I will say that I figured out how to make this work and built the framework for the system in my own head, I understood what I had to do and I knew theoretically how to go about doing it,  I just didn't know exactly how to do it in code but I am proud of the outcome even though it's one monolithic class and it is unfinished work.
