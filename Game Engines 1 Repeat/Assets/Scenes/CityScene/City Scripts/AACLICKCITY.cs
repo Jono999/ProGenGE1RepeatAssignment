@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class AACLICKCITY : MonoBehaviour
 {
@@ -35,6 +37,11 @@ public class AACLICKCITY : MonoBehaviour
     public Material[] HouseMaterials = new Material[3];
 
     private Vector3[] pairOfPoints;
+    
+    public AudioSource[] myAudioClips;
+    
+    //public Transform incrementElement;
+    //public Transform parentObj;
 
     // Start is called before the first frame update
     void Start()
@@ -43,62 +50,58 @@ public class AACLICKCITY : MonoBehaviour
         pairOfPoints = new Vector3[2];
     }
 
+    public void Generate()
+    {
+        if (!theFirstListHasBeenDrawn && overallSubdivisionControl)
+        {
+            ControlPoints(FirstPointsForSubdivision);
+        }
+            
+        else if (theFirstListHasBeenDrawn && !theSecondListHasBeenDrawn && overallSubdivisionControl)
+        {
+            MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
+
+        }
+            
+        else if (theFirstListHasBeenDrawn && theSecondListHasBeenDrawn && overallSubdivisionControl)
+        {
+            MakeSetAndSubdivideEverythingInItThree(ThirdPointsForSubdivision);
+
+        }
+    }
+
+    public void Populate()
+    {
+        StartCoroutine(SpawnBuildings(ListToSpawnBuildings));
+    }
+
+    public void Reinstate()
+    {
+        SceneManager.LoadScene("StreetLine City");
+    }
+
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartCoroutine(SpawnBuildings(ListToSpawnBuildings));
-            //SpawnBuildings(ListToSpawnBuildings);
-        }
-        
-        if (Input.GetKeyDown("space"))
-        {
-            if (!theFirstListHasBeenDrawn && overallSubdivisionControl)
-            {
-                //MakeSetAndSubdivideEverythingInItOne();
-                
-                ControlPoints(FirstPointsForSubdivision);
-                
-                //ListToAssignPoints(FirstPointsForSubdivision);
-            }
-            
-            else if (theFirstListHasBeenDrawn && !theSecondListHasBeenDrawn && overallSubdivisionControl)
-            {
-               // ControlPoints(FirstPointsForSubdivision);
-                
-                MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
-
-                // MakeSetAndSubdivideEverythingInItOne();
-            }
-            
-            else if (theFirstListHasBeenDrawn && theSecondListHasBeenDrawn && overallSubdivisionControl)
-            {
-               // ControlPoints(FirstPointsForSubdivision);
-
-              //  MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
-                
-                MakeSetAndSubdivideEverythingInItThree(ThirdPointsForSubdivision);
-
-                //theFirstListHasBeenDrawn = false;
-
-                //MakeSetAndSubdivideEverythingInItThree(ThirdPointsForSubdivision);
-
-                //overallSubdivisionControl = false;
-
-                //MakeSetAndSubdivideEverythingInItTwo(SecondPointsForSubdivision);
-                //MakeSetAndSubdivideEverythingInItOne();
-                //MakeSetAndSubdivideEverythingInItOne();
-            }
-        }
-
         if (Input.GetMouseButtonDown(0) && !pointOneIsSet)
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
             mousePosOne = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosOne.z = 0;
+            
+            myAudioClips[0].Play();
 
             Vector3 startPoint = new Vector3(mousePosOne.x, mousePosOne.y, mousePosOne.z);
+
+            
+//            var mark = GameObject.CreatePrimitive(PrimitiveType.Sphere); // Dont like the effect
+//            mark.GetComponent<Renderer>().material = RoadMaterials [Random.Range(0, RoadMaterials.Length)];
+//            mark.transform.position = startPoint;
+//            mark.transform.localScale = new Vector3(.05f, .05f, 0f);
+
+            //var newIncrementElement = Instantiate(incrementElement, startPoint, Quaternion.identity) as RectTransform;
             
             TempSavedPairedPoints.Add(startPoint);
             SavedPairedPoints.Add(startPoint);
@@ -120,9 +123,13 @@ public class AACLICKCITY : MonoBehaviour
 
     public void DrawLineBetweenTheTwoPoints()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         mousePosTwo = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosTwo.z = 0;
 
+        myAudioClips[1].Play();
+        
         Vector3 endPoint = new Vector3(mousePosTwo.x, mousePosTwo.y, mousePosTwo.z);
         
         TempSavedPairedPoints.Add(endPoint);
@@ -420,11 +427,11 @@ public class AACLICKCITY : MonoBehaviour
 
                 Vector3 pointToRight = chosenRightPoint + Quaternion.AngleAxis(90.0f, Vector3.forward)
                                        * (TheSecondList[i + 1] - chosenRightPoint).normalized
-                                       * (floatDistance / 2); //);// (floatDistance / 3);//
+                                       * (floatDistance ); //);// (floatDistance / 3);//
 
                 Vector3 pointToLeft = chosenLeftPoint + Quaternion.AngleAxis(-90.0f, Vector3.forward)
                                       * (TheSecondList[i + 1] - chosenLeftPoint).normalized
-                                      * (floatDistance / 2); //);//(floatDistance / 3);
+                                      * (floatDistance ); //);//(floatDistance / 3);
 
                 Vector3 randomRightLength = Vector3.Lerp(chosenRightPoint, pointToRight, Random.value); // Randomising Line lengths within parameters
                 Vector3 randomLeftLength = Vector3.Lerp(chosenLeftPoint, pointToLeft, Random.value); //mistake might be in the order here
